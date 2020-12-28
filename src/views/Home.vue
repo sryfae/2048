@@ -8,23 +8,32 @@
       </div>
       <div class="controls_score">
         <div class="controls_score-label">Score </div>
-
         <div class="controls_score-text" >0</div>
       </div>
+    </div>
+    <div class="game-container">
+      <grid></grid>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import Grid from '@/components/grid.vue'; // @ is an alias to /src
 
 @Options({
+  data() {
+    return {
+      score: 0
+    }
+  },
   components: {
-    HelloWorld,
+    Grid,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+
+}
 </script>
 <style lang="less" scoped>
 .home {
@@ -75,6 +84,11 @@ export default class Home extends Vue {}
         font-size: .6rem;
       }
     }
+  }
+  .game-container {
+    display: flex;
+    justify-content: center;
+    margin-top: .8rem;
   }
 }
 </style>
