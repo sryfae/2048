@@ -18,8 +18,9 @@ export default class Grid extends Vue{}
     position: relative;
     width: 85vw;
     height: 85vw;
-    border-radius: .2rem;
-    box-shadow: 0 0 .2rem 0 #f9d49a;
+    border-radius: 6px;
+    // box-shadow: 0 0 .2rem 0 #f9d49a;
+    background: #BBAC9F;
     .grid {
         display: flex;
         flex-wrap: wrap;
@@ -30,11 +31,12 @@ export default class Grid extends Vue{}
         left: 0;
         right: 0;
         bottom: 0;
+        padding: 5px;
         .grid-cell {
             flex-shrink: 0;
             width: 25%;
             height: 25%;
-            padding: 6px;
+            padding: 5px;
             background: rgba(238, 228, 218, 0.35);
             background-clip: content-box;
         }
