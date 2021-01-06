@@ -6,7 +6,7 @@
                 <div class="controls_list">
                     <div class="controls_score">
                         <div class="controls_score-label">Score</div>
-                        <div class="controls_score-text">0</div>
+                        <div class="controls_score-text">{{score}}</div>
                     </div>
                     <div class="controls_score">
                         <div class="controls_score-label">Best</div>
@@ -16,11 +16,15 @@
                 <div class="controls_game"></div>
             </div>
         </div>
-        <!-- controls -->
-        
         <div class="game-container">
-        <grid></grid>
+            <div class="game-board">
+                <div class="grid">
+                    <div class="grid-cell"
+                        v-for="(value, index) in Array.from({length: 16})" :key="index"></div>
+                </div>
+            </div>
         </div>
+        <div class="restart-btn">New Game</div>
     </div>
 </template>
 
@@ -31,11 +35,8 @@ import Grid from "@/components/grid.vue"; // @ is an alias to /src
 @Options({
   data() {
     return {
-      score: 0,
+      score: 1,
     };
-  },
-  components: {
-    Grid,
   },
 })
 export default class Home extends Vue {}
@@ -83,7 +84,7 @@ export default class Home extends Vue {}
                 }
             }
         }
-        
+
         .controls_game {
             .controls_game-btn {
                 padding: 0.1rem 0.18rem;
@@ -118,10 +119,48 @@ export default class Home extends Vue {}
         //     }
         // }
     }
+    .restart-btn {
+        width: 2.5rem;
+        background: #8f7a66;
+        font-size: .4rem;
+        color: #fff;
+        font-weight: 800;
+        margin: .4rem auto 0;
+        border-radius: 4px;
+        line-height: 3;
+    }
     .game-container {
         display: flex;
         justify-content: center;
         margin-top: 0.8rem;
+        .game-board {
+            position: relative;
+            width: 85vw;
+            height: 85vw;
+            border-radius: 6px;
+            // box-shadow: 0 0 .2rem 0 #f9d49a;
+            background: #BBAC9F;
+            .grid {
+                display: flex;
+                flex-wrap: wrap;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                padding: 5px;
+                .grid-cell {
+                    flex-shrink: 0;
+                    width: 25%;
+                    height: 25%;
+                    padding: 5px;
+                    background: rgba(238, 228, 218, 0.35);
+                    background-clip: content-box;
+                }
+            }
+        }
     }
 }
 </style>
